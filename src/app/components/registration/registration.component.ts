@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { UserService } from 'src/app/services/user.service';
 import { UserDTO } from 'src/app/model/dto/user-dto';
@@ -12,7 +11,8 @@ import { UserDTO } from 'src/app/model/dto/user-dto';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private service: UserService) { }
+  constructor(private router: Router,
+              private service: UserService) { }
 
   dto: UserDTO;
   submitted = false;
@@ -23,8 +23,18 @@ export class RegistrationComponent implements OnInit {
   }
 
   onRegFormSubmit(): void {
-    let newUuid = '';
-    this.service.createNewUser(this.dto);
+    this.submitted = true;
+    this.service.create(this.dto)
+      .subscribe(
+        resp => {
+          const userKey = resp.body.uuid;
+          console.log('User created successfully');
+          this.router.navigate(['/users/' + userKey]);
+        },
+        err => {
+          this.submitted = false;
+          console.error('Error while creating user: ' + err);
+        });
   }
 
 }

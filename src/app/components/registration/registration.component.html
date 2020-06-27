@@ -1,23 +1,28 @@
 <div class="page-header">
     <h1>
         User Registration
+        <small>
+            <i class="ace-icon fa fa-angle-double-right"></i>
+            Create a new user
+        </small>
     </h1>
 </div>
 
-<div class="row" *ngIf="errors.length > 0">
+<div class="row" **ngIf="errors.length>0">
     <div class="col-12">
-        <div class = "alert alert-danger alert-dismissable">
-            <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
-               &times;
-            </button>
-             
-            Errors encountered while submitting registration form
-            <ul>
-                <li *ngFor="let err of errors">
-                  {{ err }}
-                  </li>
-              </ul>
-         </div>
+        <div>
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                    &times;
+                </button>
+                <b>Error occured while processing registration</b>
+                <ul>
+                    <li *ngFor="let err of errors">
+                        {{ err }}
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row">
@@ -27,11 +32,11 @@
             <!-- #section:elements.form -->
 
             <div class="form-group">
-                <label class="col-3 control-label no-padding-right" for="form-field-1-1"> First Name </label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> First Name </label>
 
-                <div class="col-9">
+                <div class="col-sm-9">
                     <input type="text" name="txtFirstName" required [(ngModel)]="dto.firstName" placeholder="First Name"
-                        class="form-control" />
+                        class="col-xs-10 col-sm-5" />
                 </div>
             </div>
 
@@ -40,7 +45,7 @@
 
                 <div class="col-sm-9">
                     <input type="text" name="txtSurame" required [(ngModel)]="dto.surname" placeholder="Surname"
-                        class="form-control" />
+                        class="col-xs-10 col-sm-5" />
                 </div>
             </div>
 
@@ -49,7 +54,7 @@
 
                 <div class="col-sm-9">
                     <input type="text" name="txtTelephone" required [(ngModel)]="dto.telephone"
-                        placeholder="Tel No (e.g: 082123456)" class="form-control" />
+                        placeholder="Tel No (e.g: 082123456)" class="col-xs-10 col-sm-5" />
                 </div>
             </div>
 
@@ -58,7 +63,7 @@
 
                 <div class="col-sm-9">
                     <input type="text" name="txtIdentity" required [(ngModel)]="dto.identity" placeholder="User Idenity"
-                        class="form-control" />
+                        class="col-xs-10 col-sm-5" />
                 </div>
             </div>
 
