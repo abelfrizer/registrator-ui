@@ -1,46 +1,34 @@
 import { Injectable } from '@angular/core';
-import { UserDTO } from '../dto/user-dto';
+import { UserDTO } from 'src/app/model/dto/user-dto';
 
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { UserDAO } from '../model/dao/user-dao';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+  dao: UserDAO;
+
   user = new UserDTO();
   users: UserDTO[] = [];
 
-  constructor(private httpClient: HttpClient) { }
-
-  createNewUser(dto: UserDTO): Observable<UserDTO> {
-    return this.httpClient.post<UserDTO>(this.getServiceURL('/'), dto)
-      .pipe(
-        retry(3), // retry a failed request up to 3 times
-        catchError(this.handleError)
-      );
+  constructor(private httpClient: HttpClient) {
+    this.dao = new UserDAO(this.httpClient, 'http://localhost:8080/users');
   }
 
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-    }
-    // return an observable with a user-facing error message
-    return throwError(
-      'Something bad happened; please try again later.');
+  createNewUser(dto: UserDTO) {
+    this.dao.create(dto).subscribe(
+      resp => {
+        console.log("SuccessResp: " + JSON.stringify(resp));
+      },
+      (err: HttpErrorResponse) => {
+        console.log("ErrorResp: " + JSON.stringify(err));
+      }
+    );
   }
 
-  private getServiceURL(apiEndpoint: string): string {
-    const baseUrl = 'http://localhost:8081/users';
-    return baseUrl + apiEndpoint;
-  }
 }

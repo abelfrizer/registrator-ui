@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { UserDTO } from 'src/app/dto/user-dto';
+
 import { UserService } from 'src/app/services/user.service';
+import { UserDTO } from 'src/app/model/dto/user-dto';
 
 @Component({
   selector: 'app-registration',
@@ -23,12 +24,7 @@ export class RegistrationComponent implements OnInit {
 
   onRegFormSubmit(): void {
     let newUuid = '';
-    this.service.createNewUser(this.dto)
-      .subscribe(dto => {
-        newUuid = dto.uuid;
-        this.submitted = true;
-        //TODO: maybe redirect to view page
-      });
+    this.service.createNewUser(this.dto);
   }
 
 }
