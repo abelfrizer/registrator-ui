@@ -1,1 +1,104 @@
-<p>user-search works!</p>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            User Search
+            <small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+                Search for existing users
+            </small>
+        </h1>
+    </div>
+    <app-alerts></app-alerts>
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            <form #frmReg="ngForm" (ngSubmit)="onUserSearch()" class="form-horizontal" role="form" novalidate>
+                <!-- #section:elements.form -->
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> First Name </label>
+
+                        <div class="col-sm-9">
+                            <input type="text" name="txtFirstName" [(ngModel)]="dto.firstName" placeholder="First Name"
+                                class="col-xs-10 col-sm-5" />
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Surname </label>
+
+                        <div class="col-sm-9">
+                            <input type="text" name="txtSurame" [(ngModel)]="dto.surname" placeholder="Surname"
+                                class="col-xs-10 col-sm-5" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Start Date </label>
+
+                        <div class="col-sm-9">
+                            <input type="date" name="txtStartDate" [(ngModel)]="dto.startDate" placeholder="Start Date"
+                                class="col-xs-10 col-sm-5" />
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> End Date </label>
+
+                        <div class="col-sm-9">
+                            <input type="date" name="txtEndDate" [(ngModel)]="dto.endDate" placeholder="End Date"
+                                class="col-xs-10 col-sm-5" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-4"></div>
+
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button class="btn btn-inverse" type="submit">
+                            <i class="fa fa-search bigger-110"></i>
+                            Search
+                        </button>
+
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="btn btn-default" type="reset" (click)="onResultsReset()">
+                            Reset
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    <div class="row">
+        <div class="col-xs-12">
+            <mat-table [(dataSource)]="users">
+                <ng-container matColumnDef="firstName">
+                    <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+                    <mat-cell *matCellDef="let firstName">{{firstName.firstName}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="surname">
+                    <mat-header-cell *matHeaderCellDef>Surname</mat-header-cell>
+                    <mat-cell *matCellDef="let surname">{{surname.surname}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="telephone">
+                    <mat-header-cell *matHeaderCellDef>Telephone</mat-header-cell>
+                    <mat-cell *matCellDef="let telephone">{{telephone.telephone}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="identity">
+                    <mat-header-cell *matHeaderCellDef>User ID</mat-header-cell>
+                    <mat-cell *matCellDef="let identity">{{identity.identity}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="dateCreated">
+                    <mat-header-cell *matHeaderCellDef>Date Created</mat-header-cell>
+                    <mat-cell *matCellDef="let dateCreated">{{dateCreated.dateCreated}}</mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+            </mat-table>
+        </div>
+    </div><!-- /.row -->
+</div><!-- /.page-content -->

@@ -3,6 +3,7 @@ import { UserDTO } from 'src/app/model/dto/user-dto';
 
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UserSearchDTO } from '../model/dto/user-search-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +22,9 @@ export class UserService {
     });
   }
 
-  public search(): Observable<HttpResponse<UserDTO[]>> {
-    const serviceUrl = this.getServiceURL('/');
-    return this.http.get<UserDTO[]>(serviceUrl, {
+  public search(dto: UserSearchDTO): Observable<HttpResponse<UserDTO[]>> {
+    const serviceUrl = this.getServiceURL('/search');
+    return this.http.post<UserDTO[]>(serviceUrl, dto, {
       headers: this.getHeaders(),
       observe: 'response'
     });

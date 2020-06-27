@@ -6,8 +6,9 @@ import { UserViewComponent } from './components/user-view/user-view.component';
 
 
 const routes: Routes = [
-  { path: 'register', component: RegistrationComponent },
+  { path: '', redirectTo: '/users', pathMatch: 'full' },
   { path: 'users', component: UserSearchComponent },
+  { path: 'register', component: RegistrationComponent },
   { path: 'users/:userKey', component: UserViewComponent }
 ];
 

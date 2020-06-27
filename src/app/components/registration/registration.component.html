@@ -1,88 +1,73 @@
-<div class="page-header">
-    <h1>
-        User Registration
-        <small>
-            <i class="ace-icon fa fa-angle-double-right"></i>
-            Create a new user
-        </small>
-    </h1>
-</div>
-
-<div class="row" **ngIf="errors.length>0">
-    <div class="col-12">
-        <div>
-            <div class="alert alert-danger alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-                    &times;
-                </button>
-                <b>Error occured while processing registration</b>
-                <ul>
-                    <li *ngFor="let err of errors">
-                        {{ err }}
-                    </li>
-                </ul>
-            </div>
-        </div>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            User Registration
+            <small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+                Create a new user
+            </small>
+        </h1>
     </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        <!-- PAGE CONTENT BEGINS -->
-        <form #frmReg="ngForm" (ngSubmit)="onRegFormSubmit()" class="form-horizontal" role="form" novalidate>
-            <!-- #section:elements.form -->
+    <app-alerts></app-alerts>
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            <form #frmReg="ngForm" (ngSubmit)="onRegFormSubmit()" class="form-horizontal" role="form" novalidate>
+                <!-- #section:elements.form -->
 
-            <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> First Name </label>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> First Name </label>
 
-                <div class="col-sm-9">
-                    <input type="text" name="txtFirstName" required [(ngModel)]="dto.firstName" placeholder="First Name"
-                        class="col-xs-10 col-sm-5" />
+                    <div class="col-sm-9">
+                        <input type="text" name="txtFirstName" required [(ngModel)]="dto.firstName"
+                            placeholder="First Name" class="col-xs-10 col-sm-5" />
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Surname </label>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Surname </label>
 
-                <div class="col-sm-9">
-                    <input type="text" name="txtSurame" required [(ngModel)]="dto.surname" placeholder="Surname"
-                        class="col-xs-10 col-sm-5" />
+                    <div class="col-sm-9">
+                        <input type="text" name="txtSurame" required [(ngModel)]="dto.surname" placeholder="Surname"
+                            class="col-xs-10 col-sm-5" />
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Telephone </label>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Telephone </label>
 
-                <div class="col-sm-9">
-                    <input type="text" name="txtTelephone" required [(ngModel)]="dto.telephone"
-                        placeholder="Tel No (e.g: 082123456)" class="col-xs-10 col-sm-5" />
+                    <div class="col-sm-9">
+                        <input type="text" name="txtTelephone" required [(ngModel)]="dto.telephone"
+                            placeholder="Tel No (e.g: 082123456)" class="col-xs-10 col-sm-5" />
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Identty </label>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Identty </label>
 
-                <div class="col-sm-9">
-                    <input type="text" name="txtIdentity" required [(ngModel)]="dto.identity" placeholder="User Idenity"
-                        class="col-xs-10 col-sm-5" />
+                    <div class="col-sm-9">
+                        <input type="text" name="txtIdentity" required [(ngModel)]="dto.identity"
+                            placeholder="User Idenity" class="col-xs-10 col-sm-5" />
+                    </div>
                 </div>
-            </div>
 
-            <div class="space-4"></div>
+                <div class="space-4"></div>
 
-            <div class="clearfix form-actions" [hidden]="submitted">
-                <div class="col-md-offset-3 col-md-9">
-                    <button class="btn btn-primary" type="submit" [disabled]="!frmReg.form.valid">
-                        Submit
-                    </button>
+                <div class="clearfix form-actions" [hidden]="submitted">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button class="btn btn-primary" type="submit" [disabled]="!frmReg.form.valid">
+                            Submit
+                        </button>
 
-                    &nbsp; &nbsp; &nbsp;
-                    <button class="btn btn-default" type="reset">
-                        Reset
-                    </button>
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="btn btn-default" type="reset">
+                            Reset
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-        </form>
+            </form>
 
-    </div><!-- /.col -->
-</div>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.page-content -->

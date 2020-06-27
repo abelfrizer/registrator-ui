@@ -1,69 +1,62 @@
 <div class="page-content">
     <div class="page-header">
-      <h1>
-        Gallery
-        <small>
-          <i class="ace-icon fa fa-angle-double-right"></i>
-          responsive photo gallery using colorbox
-        </small>
-      </h1>
+        <h1>
+            User Profile
+            <small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+                view user details
+            </small>
+        </h1>
     </div>
+    <app-alerts></app-alerts>
     <!-- /.page-header -->
     <div class="row">
-      <div class="col-xs-12">
-        <!-- PAGE CONTENT BEGINS -->
-        <div class="profile-user-info profile-user-info-striped">
-            <div class="profile-info-row">
-                <div class="profile-info-name"> Username </div>
-        
-                <div class="profile-info-value">
-                    <span class="editable editable-click" id="username">alexdoe</span>
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            <div class="profile-user-info profile-user-info-striped">
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> Full Names </div>
+
+                    <div class="profile-info-value">
+                        <i class="ace-icon glyphicon glyphicon-user"></i>
+                        <span class="">
+                            {{ dto.firstName }}
+                            {{ dto.surname }}
+                        </span>
+                    </div>
                 </div>
-            </div>
-        
-            <div class="profile-info-row">
-                <div class="profile-info-name"> Location </div>
-        
-                <div class="profile-info-value">
-                    <i class="fa fa-map-marker light-orange bigger-110"></i>
-                    <span class="editable editable-click" id="country">Netherlands</span>
-                    <span class="editable editable-click" id="city">Amsterdam</span>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> Telephone </div>
+
+                    <div class="profile-info-value">
+                        <i class="fa fa-phone-square bigger-110"></i>
+                        <span class=""> {{ dto.telephone }}</span>
+                    </div>
                 </div>
-            </div>
-        
-            <div class="profile-info-row">
-                <div class="profile-info-name"> Age </div>
-        
-                <div class="profile-info-value">
-                    <span class="editable editable-click" id="age">38</span>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> Identity </div>
+
+                    <div class="profile-info-value">
+                        <i class="fa fa-barcode bigger-110"></i>
+                        <span class=""> {{ dto.identity }}</span>
+                    </div>
                 </div>
-            </div>
-        
-            <div class="profile-info-row">
-                <div class="profile-info-name"> Joined </div>
-        
-                <div class="profile-info-value">
-                    <span class="editable editable-click" id="signup">2010/06/20</span>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> Date Registered </div>
+
+                    <div class="profile-info-value">
+                        <i class="fa fa-calendar bigger-110"></i>
+                        <span class="" id="signup">{{ dto.dateCreated | date }} </span>
+                        <i class="ace-icon glyphicon glyphicon-time bigger-110"></i>
+                        <span class="" id="signup"> {{ dto.dateCreated | date:'HH:mm:ss' }}</span>
+                    </div>
                 </div>
+
             </div>
-        
-            <div class="profile-info-row">
-                <div class="profile-info-name"> Last Online </div>
-        
-                <div class="profile-info-value">
-                    <span class="editable editable-click" id="login">3 hours ago</span>
-                </div>
-            </div>
-        
-            <div class="profile-info-row">
-                <div class="profile-info-name"> About Me </div>
-        
-                <div class="profile-info-value">
-                    <span class="editable editable-click" id="about">Editable as WYSIWYG</span>
-                </div>
-            </div>
-        </div>
-        <!-- PAGE CONTENT ENDS -->
-      </div><!-- /.col -->
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
     </div><!-- /.row -->
-  </div><!-- /.page-content -->
+</div><!-- /.page-content -->
